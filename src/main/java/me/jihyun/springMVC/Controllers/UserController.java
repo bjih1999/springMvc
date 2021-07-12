@@ -14,11 +14,6 @@ public class UserController {
         return "hello";
     }
 
-    @GetMapping("/exception")
-    public String error() {
-        throw new SampleException();
-    }
-
     /*
     HttpMessageConverters
         HTTP 요청 본문을 객체로 변경하거나, 객체를 HTTP 응답 본문으로 변경할 때 사용.
@@ -33,19 +28,6 @@ public class UserController {
     @PostMapping("/user/create")
     public /*@ResponseBody*/ User Create(@RequestBody User user) {
         return user;
-    }
-
-    /*
-    해당 컨트롤러 클래스에서 예외가 발생하였을 경우
-    아래의 핸들러가 처리함
-     */
-    @ExceptionHandler(SampleException.class)
-    public @ResponseBody AppError sampleError(SampleException e) {
-        AppError appError = new AppError();
-        appError.setMessage("error.app.key");
-        appError.setReason("IDK IDK IDK");
-
-        return appError;
     }
 
 }
