@@ -22,18 +22,18 @@ public class MysqlRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        try(Connection connection = dataSource.getConnection()){
-            System.out.println(connection.getMetaData().getURL());
-            System.out.println(connection.getMetaData().getUserName());
-            Statement statement = connection.createStatement();
-            String sql = "CREATE TABLE USER(ID INTEGER NOT NULL, name VARCHAR(255), PRIMARY KEY (ID));";
-            statement.executeUpdate(sql);
-        }
-
-        /*
-        jdbcTemplate을 사용하는 경우 리소스 반납을 위한 try catch를 해줄 필요 없이 코드를 줄일 수 있음
-        */
-        jdbcTemplate.execute("INSERT INTO USER VALUES(1, 'jih')");
+//        try(Connection connection = dataSource.getConnection()){
+//            System.out.println(connection.getMetaData().getURL());
+//            System.out.println(connection.getMetaData().getUserName());
+//            Statement statement = connection.createStatement();
+//            String sql = "CREATE TABLE USER(ID INTEGER NOT NULL, name VARCHAR(255), PRIMARY KEY (ID));";
+//            statement.executeUpdate(sql);
+//        }
+//
+//        /*
+//        jdbcTemplate을 사용하는 경우 리소스 반납을 위한 try catch를 해줄 필요 없이 코드를 줄일 수 있음
+//        */
+//        jdbcTemplate.execute("INSERT INTO USER VALUES(1, 'jih')");
 
     }
 }
