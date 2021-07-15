@@ -12,6 +12,7 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.SQLException;
+import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -47,10 +48,10 @@ class AccountRepositoryTest {
 
         assertThat(newAccount).isNotNull();
 
-        Account existingAccount = accountRepository.findByUsername(newAccount.getUsername());
+        Optional<Account> existingAccount = accountRepository.findByUsername(newAccount.getUsername());
         assertThat(existingAccount).isNotNull();
 
-        Account notExistingAccount = accountRepository.findByUsername("ji");
+        Optional<Account> notExistingAccount = accountRepository.findByUsername("ji");
         assertThat(notExistingAccount).isNotNull();
     }
 
