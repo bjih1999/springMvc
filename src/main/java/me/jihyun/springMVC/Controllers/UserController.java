@@ -1,15 +1,14 @@
 package me.jihyun.springMVC.Controllers;
 
-import me.jihyun.springMVC.Errors.AppError;
-import me.jihyun.springMVC.Exceptions.SampleException;
+import me.jihyun.springMVC.AOP.LogExecutionTime;
 import me.jihyun.springMVC.Models.User;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
 
     @GetMapping("/hello")
+    @LogExecutionTime
     public String hello() {
         return "hello";
     }
