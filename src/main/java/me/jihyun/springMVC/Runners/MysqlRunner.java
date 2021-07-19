@@ -3,6 +3,7 @@ package me.jihyun.springMVC.Runners;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -19,9 +20,13 @@ public class MysqlRunner implements ApplicationRunner {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+    @Autowired
+    Environment environment;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
+        System.out.println(environment.getProperty("spring.jpa.hibernate.ddl-auto"));
 //        try(Connection connection = dataSource.getConnection()){
 //            System.out.println(connection.getMetaData().getURL());
 //            System.out.println(connection.getMetaData().getUserName());
